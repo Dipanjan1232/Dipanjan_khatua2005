@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dipanjan Khatua - Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            caret-color: transparent;
+            margin: 0; padding: 0; box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+        /* ⚡ SUPER NEON ANIMATED BACKGROUND */
+        body {
+            background: radial-gradient(circle at 20% 20%, rgba(0,255,255,0.25), transparent 40%),
+                        radial-gradient(circle at 80% 80%, rgba(255,0,200,0.25), transparent 40%),
+                        radial-gradient(circle at 50% 50%, rgba(0,255,150,0.2), transparent 50%),
+                        linear-gradient(135deg, #000000, #020b33, #001f3f, #0a043c, #020202);
+            background-size: 250% 250%;
+            animation: neonBg 6s ease-in-out infinite alternate;
+            color: #fff;
+            overflow-x: hidden;
+        }
+        @keyframes neonBg {
+            0% { background-position: 0% 0%; filter: brightness(0.85); }
+            50% { background-position: 100% 50%; filter: brightness(1.1); }
+            100% { background-position: 60% 100%; filter: brightness(1); }
+        }
+        header {
+            position: fixed;
+            width: 100%;
+            top: 0;
+            padding: 20px;
+            backdrop-filter: blur(10px);
+            background: rgba(0,0,0,0.4);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+            border-bottom: 1px solid rgba(0,255,255,0.3);
+        }
+        /* ⭐ NEW ANIMATED LOGO */
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            background: linear-gradient(45deg, #00eaff, #ff00c8, #00ff95);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: logoGlow 2s ease-in-out infinite alternate;
+            letter-spacing: 1px;
+        }
+        @keyframes logoGlow {
+            0% { text-shadow: 0 0 8px #00eaff; transform: translateY(0); }
+            50% { text-shadow: 0 0 14px #ff00c8; transform: translateY(-2px); }
+            100% { text-shadow: 0 0 12px #00ff95; transform: translateY(0); }
+        }
+        header nav { display: flex; align-items: center; gap: 24px; }
+        header ul { list-style: none; display: flex; }
+        header ul li { margin-left: 30px; }
+        header ul li a {
+            color: #00eaff;
+            text-decoration: none;
+            font-weight: 600;
+            transition: 0.3s;
+            text-shadow: 0 0 8px #00eaff;
+        }
+        header ul li a:hover { color: #ff00c8; text-shadow: 0 0 10px #ff00c8; }
+        /* LinkedIn small button */
+        .linkedin-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 12px;
+            background: linear-gradient(90deg, rgba(0,234,255,0.12), rgba(255,0,200,0.06));
+            border: 1px solid rgba(0,234,255,0.2);
+            color: #00eaff;
+            text-decoration: none;
+            font-weight: 600;
+            border-radius: 999px;
+            box-shadow: 0 0 10px rgba(0,234,255,0.06);
+            transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
+            font-size: 0.9rem;
+        }
+        .linkedin-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 18px rgba(255,0,200,0.12);
+            color: #fff;
+            background: linear-gradient(90deg, #00eaff, #ff00c8);
+        }
+        .linkedin-btn svg { width: 18px; height: 18px; filter: drop-shadow(0 0 6px rgba(0,234,255,0.12)); }
+        /* Hero Section */
+        #hero {
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding-top: 80px;
+        }
+        #mainName {
+            font-size: 4rem;
+            font-weight: 800;
+            background: linear-gradient(45deg, #00eaff, #ff00c8, #00ff95);
+            -webkit-text-fill-color: transparent;
+            -webkit-background-clip: text;
+            animation: neonGlow 1.5s infinite alternate;
+        }
+        @keyframes neonGlow {
+            from { filter: drop-shadow(0px 0px 10px #00eaff); }
+            to { filter: drop-shadow(0px 0px 20px #ff00c8); }
+        }
+        .hero-subtitle {
+            font-size: 1.3rem;
+            margin-top: 10px;
+            color: #d6f6ff;
+            text-shadow: 0 0 8px #00eaff;
+        }
+        .cta {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 12px 30px;
+            background: #00eaff;
+            color: #000;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: 0.3s;
+            box-shadow: 0 0 12px #00eaff;
+        }
+        .cta:hover { background: #ff00c8; color: #fff; box-shadow: 0 0 15px #ff00c8; }
+        /* About Section */
+        #about {
+            padding: 100px 0;
+            background: rgba(0,0,0,0.35);
+            border-top: 1px solid rgba(0,255,255,0.3);
+            border-bottom: 1px solid rgba(0,255,255,0.3);
+        }
+        #about .container {
+            width: 85%;
+            margin: auto;
+            text-align: center;
+        }
+        /* PROFILE PHOTO */
+        .profile-pic {
+            width: 250px;
+            height: 250px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid #00eaff;
+            margin-bottom: 20px;
+            box-shadow: 0 0 30px #00eaff;
+            transition: 0.5s;
+        }
+        .profile-pic:hover {
+            transform: scale(1.08);
+            box-shadow: 0 0 35px #ff00c8;
+        }
+        /* Projects Section Modifications */
+        .projects-list {
+            list-style: none;
+            padding: 0;
+        }
+        .project-item {
+            margin-bottom: 10px;
+            position: relative;
+        }
+        .project-link {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 600;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+        .project-link:hover {
+            color: #00eaff;
+        }
+        .project-details {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80%;
+            max-width: 600px;
+            background: rgba(0,0,0,0.8);
+            border: 1px solid #00eaff;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 0 20px rgba(0,255,255,0.5);
+            z-index: 10;
+            animation: slideIn 0.5s ease-out;
+            text-align: center;
+        }
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateX(-50%) translateY(-10px); }
+            to { opacity: 1; transform: translateX(-50%) translateY(0); }
+        }
+        .project-item:hover .project-details {
+            display: block;
+        }
+        .project-caption {
+            font-size: 0.9rem;
+            color: #d9faff;
+            margin-bottom: 15px;
+            text-shadow: 0 0 6px #00eaff;
+        }
+        .project-images {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .project-images img {
+            width: 180px;
+            height: 180px;
+            object-fit: cover;
+            border-radius: 10px;
+            border: 2px solid #00eaff;
+            transition: transform 0.3s;
+        }
+        .project-images img:hover {
+            transform: scale(1.05);
+        }
+        /* Skills Section */
+        #skills {
+            padding: 100px;
+            text-align: center;
+        }
+        .skills-grid {
+            display: grid;
+            margin-top: 40px;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 25px;
+        }
+        .skill-box {
+            background: rgba(0,255,255,0.1);
+            padding: 25px;
+            border-radius: 15px;
+            font-size: 1.2rem;
+            font-weight: 600;
+            border: 1px solid #00eaff;
+            color: #00eaff;
+            text-shadow: 0 0 8px #00eaff;
+            transition: 0.3s;
+        }
+        .skill-box:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 0 20px #ff00c8;
+            color: #ff00c8;
+        }
+        /* Achievements */
+        #achievements {
+            padding: 100px;
+        }
+        .achievements-list {
+            width: 80%;
+            margin: auto;
+        }
+        .achievements-list li {
+            background: rgba(0,255,255,0.1);
+            padding: 18px;
+            border-radius: 10px;
+            margin-bottom: 15px;
+            font-weight: 600;
+            border: 1px solid #00eaff;
+            color: #d9faff;
+            text-shadow: 0 0 6px #00eaff;
+            transition: 0.3s;
+        }
+        .achievements-list li:hover {
+            transform: translateX(10px);
+            box-shadow: 0 0 12px #ff00c8;
+            border-color: #ff00c8;
+        }
+        #contact {
+            padding: 80px;
+            text-align: center;
+            color: #d7ffff;
+        }
+        footer {
+            text-align: center;
+            padding: 20px;
+            margin-top: 30px;
+            background: rgba(0,0,0,0.7);
+            border-top: 1px solid #00eaff;
+            color: #9efcff;
+        }
+        /* small responsive tweaks */
+        @media (max-width: 720px) {
+            #mainName { font-size: 2.2rem; }
+            header ul li { margin-left: 12px; }
+            .linkedin-btn { padding: 6px 8px; font-size: 0.8rem; }
+            .project-details {
+                position: static;
+                width: 100%;
+                margin-top: 10px;
+                transform: none;
+            }
+        }
+    </style>
+</head>
+<body>
+<header>
+    <div style="display:flex; align-items:center; gap:18px;">
+        <div class="logo">Dipanjan Khatua</div>
+    </div>
+    <nav>
+        <ul>
+            <li><a href="#hero">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#achievements">Achievements</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+        <!-- LinkedIn button (opens in a new tab) -->
+        <a class="linkedin-btn" href="https://www.linkedin.com/in/dipanjan-khatua-4887282a4/" target="_blank" rel="noopener noreferrer" aria-label="Open Dipanjan's LinkedIn profile">
+            <!-- Inline LinkedIn SVG icon -->
+            <svg viewBox="0 0 448 512" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+                <path fill="currentColor" d="M100.28 448H7.4V148.9h92.88zM53.79 108.1C24.09 108.1 0 83.8 0 54.3a53.85 53.85 0 01107.7 0c0 29.5-24.1 53.8-53.91 53.8zM447.9 448h-92.4V302.4c0-34.7-.7-79.4-48.4-79.4-48.4 0-55.8 37.8-55.8 76.8V448h-92.9V148.9h89.2v40.7h1.3c12.4-23.6 42.6-48.4 87.7-48.4 93.8 0 111.1 61.8 111.1 142.3V448z"/>
+            </svg>
+            <span style="display:inline-block;">LinkedIn</span>
+        </a>
+    </nav>
+</header>
+<section id="hero">
+    <div>
+        <h1 id="mainName">DIPANJAN KHATUA</h1>
+        <p class="hero-subtitle">Tech Enthusiast | Robotics | AI | Developer</p>
+        <a href="#about" class="cta">Explore More</a>
+    </div>
+</section>
+<section id="about">
+    <div class="container">
+        <img src="C:/Users/ASUS/OneDrive/Pictures/Saved Pictures/WhatsApp Image 2025-05-02 at 20.00.59_8c95e99c.jpg" class="profile-pic" alt="Profile Picture">
+        <h2>About Me</h2>
+        <p>
+            I am a passionate Computer Science student with hands-on experience in Robotics, AI,
+            Automation and Software Development.
+        </p>
+        <h2 style="margin-top:40px;">My Projects</h2>
+        <ul class="projects-list">
+            <li class="project-item">- <span class="project-link">Multipurpose Robotics System for Military & Disaster Management</span>
+             <div class="project-details">
+                    <div class="project-caption">
+                        🚀 Introducing RAKSHAK – Our Multi-Terrain Amphibious Defense Bot 🇮🇳🤖<br>
+                        Designed and developed by Team Rudra for the Indian Army.<br><br>
+                        Today’s military robots are mostly expensive drones with limited versatility. Multi-terrain land rovers are rare, and existing ones focus mainly on surveillance with low payload capacity.<br><br>
+                        To bridge this gap, we built RAKSHAK — a powerful amphibious bot capable of operating across challenging terrains while carrying a high payload. It enhances surveillance, boosts operational efficiency, and supports soldiers in critical missions.<br><br>
+                        Proud to contribute to innovative defense technology for our nation. 🇮🇳💪<br>
+                        #Rakshak #TeamRudra #IndianArmy #Robotics #DefenseInnovation #AmphibiousRobot #Engineering #MakeInIndia
+                    </div>
+                    <div class="project-images">
+                        <img src="C:\Users\ASUS\OneDrive\Pictures\Saved Pictures\WhatsApp Image 2025-12-07 at 12.52.23 PM.jpeg" alt="Multipurpose Robotics System for Military & Disaster Management 1">
+                        <img src="C:\Users\ASUS\OneDrive\Pictures\Saved Pictures\WhatsApp Image 2025-12-07 at 12.47.46 PM.jpeg" alt="Multipurpose Robotics System for Military & Disaster Management 2">
+                    </div>
+                </div>
+            </li>
+            <li class="project-item">- <span class="project-link">Face Recognition Based Attendance Management System</span>
+            <div class="project-details">
+                    <div class="project-caption">
+                       Proud to share my self-developed Face Recognition Attendance Management System — an AI-powered solution with real-time face detection, automated attendance, and complete student data management.
+A great learning journey with Python, OpenCV, and MySQL. 🚀🤖
+
+hashtag#ArtificialIntelligence hashtag#FaceRecognition hashtag#AttendanceSystem
+hashtag#PythonDeveloper hashtag#OpenCV hashtag#MachineLearning hashtag#MySQL
+                    </div>
+                    <div class="project-images">
+                        <img src="C:\Users\ASUS\OneDrive\Pictures\Screenshots\Screenshot 2025-08-05 103544.png" alt="Face Recognition Based Attendance Management System 1">
+                        <img src="C:\Users\ASUS\OneDrive\Pictures\Saved Pictures\1764165926840.jpeg" alt="Face Recognition Based Attendance Management System 2">
+                    </div>
+                </div>
+            </li>
+            <li class="project-item">- <span class="project-link">RC Boat for On-Water Surveillance</span>
+            <div class="project-details">
+                    <div class="project-caption">
+                        My latest project? A fully functional robotic boat designed for automation and remote navigation!
+
+This project was both challenging and exciting, but with teamwork and determination, I made it a success. Looking forward to refining and expanding its capabilities!
+
+A big thanks to my team for their dedication and effort. 🚀
+
+hashtag#Robotics hashtag#Innovation hashtag#TechForGood hashtag#Automation hashtag#Engineering
+                    </div>
+                    <div class="project-images">
+                        <img src="C:\Users\ASUS\OneDrive\Pictures\Saved Pictures\WhatsApp Image 2025-12-07 at 1.06.36 PM.jpeg" alt="RC Boat for On-Water Surveillance 1">
+                        <img src="C:\Users\ASUS\OneDrive\Pictures\Saved Pictures\Screenshot 2025-12-07 131248.png" alt="RC Boat for On-Water Surveillance 2">
+                    </div>
+                </div>
+            </li>
+            <li class="project-item">
+                - <span class="project-link">Waste Segregation Monitoring System</span>
+                <div class="project-details">
+                    <div class="project-caption">
+                        ♻️ Building smart solutions for a cleaner future!<br>
+                        Here’s my IoT-based Smart Waste Segregation System that automatically separates wet & dry waste and sends real-time bin updates to a cloud dashboard.<br>
+                        Proud to contribute towards smarter cities and sustainable living! 🌍✨<br>
+                        #IoT #SmartWaste #Innovation #Sustainability #Engineering
+                    </div>
+                    <div class="project-images">
+                        <img src="C:/Users/ASUS/OneDrive/Pictures/Saved Pictures/1764569282581.jpeg" alt="Waste Segregation System Image 1">
+                        <img src="C:/Users/ASUS/OneDrive/Pictures/Saved Pictures/Dustbin.jpeg" alt="Waste Segregation System Image 2">
+                    </div>
+                </div>
+            </li>
+            <li class="project-item">- <span class="project-link">Autonomous Line-Following Robot</span>
+             <div class="project-details">
+                    <div class="project-caption">
+                        🚀 Excited to share my Line Follower Robot Project! Built using Arduino UNO,
+                        IR sensors, and DC motors, this robot can detect and follow a path with precision 
+                        by continuously reading surface contrast and adjusting its movement in real time. 
+                        🔧 What I learned while building this: • Basics of embedded systems • Working 
+                        with IR sensors for line detection • Motor driver control & speed adjustment 
+                        • Logic designing for autonomous navigation 
+                        🤖 This project helped me understand how industrial AGVs (Automated Guided 
+                        Vehicles) work and strengthened my interest in robotics & automation. Always 
+                        excited to build more such projects and explore deeper into robotics! 
+                        🌟 #Robotics #Arduino #Innovation #Engineering #LineFollowerRobot #Projects #TechEnthusiast #Automation
+                    </div>
+                    <div class="project-images">
+                        <img src="C:\Users\ASUS\OneDrive\Pictures\Saved Pictures\1745818859975.jpeg" alt="Autonomous Line-Following Robot 1">
+                        <img src="C:\Users\ASUS\OneDrive\Pictures\Saved Pictures\1745818860109.jpeg" alt="Autonomous Line-Following Robot 2">
+                    </div>
+            </li>
+        </ul>
+    </div>
+</section>
+<section id="skills">
+    <h2>My Skills</h2>
+    <div class="skills-grid">
+        <div class="skill-box">C</div>
+        <div class="skill-box">Python</div>
+        <div class="skill-box">DBMS</div>
+        <div class="skill-box">JavaScript</div>
+        <div class="skill-box">HTML/CSS</div>
+    </div>
+</section>
+<section id="achievements">
+    <h2 style="text-align:center;">Achievements</h2>
+    <ul class="achievements-list">
+        <li>1st – IEEE R10 Robotics Competition 2025</li>
+        <li>1st – Debate Competition (National Science Day 2025)</li>
+        <li>1st – Line Follower (Tronix 2025)</li>
+        <li>1st – Model Presentation (National Space Day 2024)</li>
+        <li>1st – Hackathon (Parikalpana Tech Fest)</li>
+        <li>1st – Model Presentation (Parikalpana Tech Fest)</li>
+        <li>2nd – Robo Race (Innovacion – IEM Tech Fest)</li>
+    </ul>
+</section>
+<section id="contact">
+    <h2>Contact Me</h2>
+    <p>Email: <b style="color:#00eaff;">dipanjankhatua3@gmail.com</b></p>
+    <p>Phone: <b style="color:#ff00c8;">6006381851</b></p>
+</section>
+<footer>
+    <footer>
+    © 2025 Dipanjan Khatua | All Rights Reserved
+</footer>
+
+</body>
+</html>
